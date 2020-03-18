@@ -1,6 +1,6 @@
 package it.polito.tdp.alien;
 
-import javafx.application.Application;
+import javafx.application.Application; 
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,9 +12,18 @@ public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
+    	
+    	AlienDictionary dizionario=new AlienDictionary();
+    	FXMLController controller;
+    	
+    	FXMLLoader loader=new  FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+    	Parent root = loader.load();
         Scene scene = new Scene(root);
+        
+        
+        controller=loader.getController();
+    	controller.setDizionario(dizionario);
+    	
         scene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("Soluzione esercizio Alien");
